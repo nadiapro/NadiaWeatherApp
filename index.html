@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Src/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Nadia App</title>
+</head>
+<body>
+    <div class="weatherApp">
+        <header>
+            <form id="searchForm">
+                <input type="text" placeholder="Enter The City ..." class="searchInput" id="searchInput"/>
+                <input type="submit" value="Search" class="searchButton"/>
+            </form>
+        </header>
+        <main>
+            <div class="city" id="city">
+            </div>
+            <div class="temp">
+                <span class="tempIcon" id="tempIcon">
+                </span>
+                <div class="dateTime" id="dateTime">
+                </div>
+                <div class="tempNumber">
+                    <span id="tempValue"></span>
+                    <span class="degree">&deg C</span>
+                </div>
+            </div>
+            <div class="tempInfo">
+                <div class="innerTempInfo">
+                    <div>
+                        <span>
+                            Country
+                        </span>
+                        <span class="tempInfoValue" id="country">
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Humidity
+                        </span>
+                        <span class="tempInfoValue" id="humidity">
+                        </span>
+                    </div>
+                </div>
+                <div class="innerTempInfo">
+                    <div>
+                        <span>
+                            Description
+                        </span>
+                        <span class="tempInfoValue" id="description">
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Feels_Like
+                        </span>
+                        <span class="tempInfoValue" id="feels_like">
+                        </span>
+                    </div>
+                </div>
+                <div class="innerTempInfo">
+                    <div>
+                        <span>
+                            Pressure
+                        </span>
+                        <span class="tempInfoValue" id="pressure">
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            WindSpeed
+                        </span>
+                        <span class="tempInfoValue" id="windSpeed">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            This project was coded by
+            <a href="https://github.com/nadiapro" target="_blank"> Nadia </a>,
+            is
+            <a href="https://github.com/nadiapro/NadiaWeatherApp" target="_blank">open-sourced on GitHub</a>
+            and
+            <a href="" target="_blank">hosted on Netlify</a>
+        </footer>
+    </div>
+    <script src="Src/app.js"></script>
+</body>
+</html>
