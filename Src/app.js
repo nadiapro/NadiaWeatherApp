@@ -1,18 +1,40 @@
-let searchForm = document.querySelector('#searchForm');
-let apiKey = 'obfc8931a156c82tbca302f27e893d4a';
-
-searchForm.addEventListener('submit', getCity);
-
-function getCity(event) {
-    event.preventDefault();
-    let searchInput = document.querySelector('#searchInput').value;
-    getData(searchInput);
+function formatDate(dateTime) {
+    let thisDateTime = new Date(dateTime * 1000);
+    let day = ['SunDay', 'MonDay', 'TuesDay', 'WednesDay', 'ThursDay', 'FriDay', 'SaturDay'];
+    let min = thisDateTime.getMinutes();
+    let hour = thisDateTime.getHours();
+    let date = day[thisDateTime.getDay()];
+    if (min < 10) {
+        min = `0${min}`;
+    }
+    return date + '  ' + hour + ':' + min;
 }
-function getData(city) {
-    let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    axios.get(url).then(checkData);
+function getDay(timestamp) {
+    let dateTime = new Date(timestamp * 1000);
+    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let date = days[dateTime.getDay()];
+    return date;
 }
-function checkData(response) {
+function fillForecast(response) {
+    let forecast = document.querySelector('#forecast');
+    forecast.innerHTML = "";
+    response.data.daily.forEach(function (element, index) {
+        if (index < 5) {
+            let thisNode = `<div class="forecastEachDay"">
+                    <p>${getDay(element.time)}</p>
+                    <img src="${element.condition.icon_url}" />
+                    <p class="forecastTemp"><span class="maxTemp">${Math.round(element.temperature.maximum)} &deg</span> <span>${Math.round(element.temperature.minimum)} &deg</span></p>
+                </div>`;
+            forecast.innerHTML += thisNode;
+        }
+    });
+};
+function getForecast(city) {
+    let apiKey = 'obfc8931a156c82tbca302f27e893d4a';
+    let url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+    axios(url).then(fillForecast);
+}
+function fillData(response) {
     let city = document.querySelector('#city');
     let tempValue = document.querySelector('#tempValue');
     let tempIcon = document.querySelector('#tempIcon');
@@ -47,14 +69,18 @@ function checkData(response) {
         windSpeed.innerHTML = response.data.wind.speed + 'km/h';
         dateTime.innerHTML = formatDate(response.data.time);
     }
+    getForecast(response.data.city);
 }
-
-function formatDate(dateTime) {
-    let thisDateTime = new Date(dateTime);
-    let day = ['SaturDay', 'SunDay', 'MonDay', 'TuesDay', 'WednesDay', 'ThursDay', 'FriDay'];
-    let min = thisDateTime.getMinutes();
-    let hour = thisDateTime.getHours();
-    let date = day[thisDateTime.getDay()];
-    return date + '  ' + hour + ':' + min;
+function getData(city) {
+    let apiKey = 'obfc8931a156c82tbca302f27e893d4a';
+    let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios(url).then(fillData);
 }
+function getCity(event) {
+    event.preventDefault();
+    let searchInput = document.querySelector('#searchInput').value;
+    getData(searchInput);
+}
+let searchForm = document.querySelector('#searchForm');
+searchForm.addEventListener('submit', getCity);
 getData('Tehran');

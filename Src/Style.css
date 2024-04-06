@@ -68,11 +68,13 @@ main {
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 10px 10px 10px;
-    background-color: #fdba466e;
+    background-color: #f7ca7c6e;
     border: 1px solid #a9a966b8;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     font-size: 14px;
+    font-size: 14px;
+    color:gray;
 }
 .innerTempInfo {
     display: flex;
@@ -89,6 +91,32 @@ main {
     color: #ed8500;
     font-weight: bold;
 }
+#forecast{
+    display: flex;
+    margin: 10px 0;
+}
+.forecastEachDay {
+    margin: 0 auto;
+    text-align: center;
+    border: 0.5px solid #fdba466e;
+    border-radius: 5px;
+    padding: 5px 18px;
+    color: gray;
+}
+.forecastEachDay p{
+    margin: 0;
+}
+    .forecastEachDay img {
+        width: 50px;
+        height : 50px;
+    }
+    .forecastEachDay .forecastTemp {
+        font-size:14px;
+    }
+        .forecastEachDay .forecastTemp .maxTemp {
+            font-weight: bold;
+            color: #ed8500;
+        }
 footer {
     font-size: 12px;
     color: #958d8d;
