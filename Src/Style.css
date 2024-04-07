@@ -37,9 +37,11 @@ main {
 .city {
     display: flex;
     justify-content: center;
-    font-size: 40px;
+    font-size: 34px;
     font-weight: bold;
     margin-top: 10px;
+    -webkit-text-stroke: 1px #e5a735;
+    color: #372821;
 }
 .temp {
     display: flex;
@@ -56,12 +58,15 @@ main {
         flex-flow:row;
     }
 #tempValue {
-    font-size: 60px;
+    font-size: 52px;
+    font-weight: bold;
+    color: #918989;
 }
-    .temp .degree {
-        font-size: 20px;
-        margin-top:10px;
-    }
+.temp .degree {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #918989;
+}
 .tempInfo {
     display: flex;
     gap: 10px 0;
